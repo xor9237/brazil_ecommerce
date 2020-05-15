@@ -15,3 +15,5 @@ Data Analysis using the public dataset from the Brazilian online store "Olist" w
 
 
 5. The month with the highest revenues (Sales prediction with dates when items sold)
+
+6. Who pays more for the delivery fee? (Depends on city and purchase cost)

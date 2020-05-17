@@ -3,6 +3,14 @@
 Data Analysis using the public dataset from the Brazilian online store "Olist" where sellers posting their products and sell.
 
 1. If they open the offline store, which cities should they target first? (Cluster cities into high, mid and low revenues)
+Merge the dataframes on the identical variables to match the order_id and customer_id to payment value
+```
+# merge cust_df and order_df
+cust_order_df = pd.merge(order_df, cust_df, on='customer_id', how='inner')
+
+# merge with the pay_df
+cust_order_pay_df = pd.merge(cust_order_df, pay_df, on='order_id', how='inner')
+```
 
 
 2. Where does the most revenue coming from?

@@ -15,7 +15,7 @@ cust_order_pay_df = pd.merge(cust_order_df, pay_df, on='order_id', how='inner')
 
 ![GitHub Logo](/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/images/1.state_pay.png)
 
-![Image description](https://postimg.cc/56wRQh7H)
+![Image description](https://i.postimg.cc/VLTQp1XF/Screen-Shot-2020-05-17-at-1-12-47-AM.png)
 
 
 2. Where does the most revenue coming from?

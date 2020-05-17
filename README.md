@@ -14,9 +14,23 @@ cust_order_pay_df = pd.merge(cust_order_df, pay_df, on='order_id', how='inner')
 ```
 
 ### Top 5 states with the highest revenues
+```
+# create a new dataframe with states and payment_value
+state_pay = cust_order_pay_df.loc[:, ['customer_state', 'payment_value']].groupby('customer_state').sum()
+state_pay = state_pay.sort_values(by='payment_value', ascending=False).reset_index()
+state_pay.head()
+```
 ![Image description](https://i.postimg.cc/VLTQp1XF/Screen-Shot-2020-05-17-at-1-12-47-AM.png)
+
 ### Top 5 cities with the highest revenues
+```
+# create a new dataframe with cities and total payment
+city_pay = cust_order_pay_df.loc[:, ['customer_city', 'payment_value']].groupby('customer_city').sum()
+city_pay = city_pay.sort_values(by='payment_value', ascending=False).reset_index()
+city_pay.head()
+```
 ![Image description](https://i.postimg.cc/9fFH2PvF/2-city-pay.png)
+
 
 
 2. Where does the most revenue coming from?

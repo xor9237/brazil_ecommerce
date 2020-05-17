@@ -35,3 +35,13 @@ cust_order_pay_df = pd.merge(cust_order_df, pay_df, on='order_id', how='inner')
 
 
 6. Who pays more for the delivery fee? (Depends on city and purchase cost)
+
+
+
+
+# yes
+## yes
+### yes
+**yes**
+*yes*
+> yes

@@ -15,6 +15,8 @@ cust_order_pay_df = pd.merge(cust_order_df, pay_df, on='order_id', how='inner')
 
 ### Top 5 states with the highest revenues
 ![Image description](https://i.postimg.cc/VLTQp1XF/Screen-Shot-2020-05-17-at-1-12-47-AM.png)
+### Top 5 cities with the highest revenues
+![Image description](https://i.postimg.cc/9fFH2PvF/2-city-pay.png)
 
 
 2. Where does the most revenue coming from?

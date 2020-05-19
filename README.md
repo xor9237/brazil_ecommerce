@@ -2,6 +2,18 @@
 
 Data Analysis using the public dataset from the Brazilian online store "Olist" where sellers posting their products and sell.
 
+**Data Description**
+Dataset is consists of 8 datasets. 
+- "olist_customers_dataset.csv" consists of customers' ID, customers' zip code, customers' cities and state
+- "olist_orders_dataset.csv" consists of order ID, customers' ID, order delivery status, time of purchase, order approved date, order delivered date and order estimated date.
+- "olist_sellers_dataset.csv" consists of sellers' ID, sellers' zip codes and sellers' cities and states.
+- "olist_order_reviews_dataset.csv" consists of review ID, order ID, review score, review comments and review creation dates.
+- "product_category_name_translaton.csv" consists of names or product categories.
+- "olist_order_payments_dataset.csv" consists of order ID, payment type, installments of payments and payment values.
+- "olist_order_items_dataset.csv" consists of order ID, product ID, seller ID, shipping limit date, price and freight values.
+- "olist_geolocation_dataset.csv" consists of zip codes, latitudes, longitudes, cities and states.
+
+
 **Modules to import**
 
 ```

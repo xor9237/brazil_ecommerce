@@ -56,6 +56,14 @@ plt.show()
 
 **States with the revenues in descending order displayed in bar chart
 ```
+state_pay.plot(kind='bar', figsize=(10,5), x='customer_state', y='payment_value')
+plt.ticklabel_format(axis='y', style='plain', useOffset=False)
+plt.title("States of customers and their revenues")
+plt.xlabel("States of customers")
+plt.ylabel("Revenue")
+```
+
+![Image Description](https://i.postimg.cc/65tzk5F9/4-Barchart-for-1.png)
 
 
 

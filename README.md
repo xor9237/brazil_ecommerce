@@ -92,7 +92,8 @@ plt.ylabel("Revenue")
 
 ![Image Description](https://i.postimg.cc/65tzk5F9/4-Barchart-for-1.png)
 
-
+2. If, for example, Olist first decided to open their first offlines store in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the place to open the first store?
+Locate the location of customers, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist which means many to find the location where it's easily accessible. 
 
 
 2. What is the most popular products? (Which product is creating revenue the most?)

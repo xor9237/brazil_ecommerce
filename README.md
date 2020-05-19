@@ -2,7 +2,7 @@
 
 Data Analysis using the public dataset from the Brazilian online store "Olist" where sellers posting their products and sell.
 
-**Modules to import
+**Modules to import**
 
 ```
 import matplotlib.pyplot as plt
@@ -41,7 +41,7 @@ city_pay.head()
 
 ![Image description](https://i.postimg.cc/9fFH2PvF/2-city-pay.png)
 
-**Top 50 cities for revenues displayed in bar chart
+**Top 50 cities for revenues displayed in bar chart**
 ```
 city_pay_top50 = city_pay.loc[0:49, :]
 
@@ -54,7 +54,7 @@ plt.show()
 ```
 ![Image Description](https://i.postimg.cc/5t649JYG/3-Barchart-for-1.png)
 
-**States with the revenues in descending order displayed in bar chart
+**States with the revenues in descending order displayed in bar chart**
 ```
 state_pay.plot(kind='bar', figsize=(10,5), x='customer_state', y='payment_value')
 plt.ticklabel_format(axis='y', style='plain', useOffset=False)

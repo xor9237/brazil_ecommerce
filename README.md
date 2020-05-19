@@ -12,6 +12,19 @@ import os
 
 ### 1. If they open the offline store, which states of cities should they target first? 
 
+
+Read each files individually and create dataframes
+```
+cust_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/olist_customers_dataset.csv')
+order_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/olist_orders_dataset.csv')
+seller_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/olist_sellers_dataset.csv')
+review_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/olist_order_reviews_dataset.csv')
+productname_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/product_category_name_translation.csv')
+pay_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/olist_order_payments_dataset.csv')
+order_item_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/olist_order_items_dataset.csv')
+location_df = pd.read_csv('/Users/kitaeklee/Desktop/Data/brazilian-ecommerce/olist_geolocation_dataset.csv')
+```
+
 Merge the dataframes on the identical variables to match the order_id and customer_id to payment value
 ```
 # merge cust_df and order_df
@@ -23,6 +36,7 @@ cust_order_pay_df = pd.merge(cust_order_df, pay_df, on='order_id', how='inner')
 
 **Top 5 states with the highest revenues**
 ```
+
 # create a new dataframe with states and payment_value
 state_pay = cust_order_pay_df.loc[:, ['customer_state', 'payment_value']].groupby('customer_state').sum()
 state_pay = state_pay.sort_values(by='payment_value', ascending=False).reset_index()

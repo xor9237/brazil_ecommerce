@@ -3,10 +3,12 @@
 Data Analysis using the public dataset from the Brazilian online store "Olist" where sellers posting their products and sell.
 
 **Modules to import
+
 ```
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+```
 
 ### 1. If they open the offline store, which states of cities should they target first? 
 
@@ -26,6 +28,7 @@ state_pay = cust_order_pay_df.loc[:, ['customer_state', 'payment_value']].groupb
 state_pay = state_pay.sort_values(by='payment_value', ascending=False).reset_index()
 state_pay.head()
 ```
+
 ![Image description](https://i.postimg.cc/VLTQp1XF/Screen-Shot-2020-05-17-at-1-12-47-AM.png)
 
 **Top 5 cities with the highest revenues**

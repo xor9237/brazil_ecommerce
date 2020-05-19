@@ -113,4 +113,4 @@ plt.ylabel("Revenue")
 
 
 
-
+Elbow method to determine the optimal number of clusters for K-means clustering

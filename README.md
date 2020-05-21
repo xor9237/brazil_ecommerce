@@ -105,7 +105,7 @@ plt.ylabel("Revenue")
 
 ### 2. If, for example, Olist first decided to open their first offlines store in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the place to open the first store?
 
-Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers. 
+**Plan: Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers.**
 
 The original dataset consist of 1000163 rows which contain the latitudes and longitudes of various cities so I extracted only the rows of the city "Sao Paulo" which has 135800 rows.
 ```

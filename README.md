@@ -21,6 +21,17 @@ Dataset is consists of 8 datasets.
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+
+import folium
+from geopy.geocoders import Nominatim
+import matplotlib.cm as cm
+import matplotlib.colors as colors
+import geocoder
+
+from sklearn.cluster import KMeans
+
+# To get the address by using latitudes and longitudes
+import reverse_geocoder as rg
 ```
 
 ### 1. If they open the offline store, which states of cities should they target first? 
@@ -95,6 +106,21 @@ plt.ylabel("Revenue")
 2. If, for example, Olist first decided to open their first offlines store in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the place to open the first store?
 
 Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers. 
+
+The original dataset consist of 1000163 rows which contain the latitudes and longitudes of various cities so I extracted only the rows of the city "Sao Paulo" which has 135800 rows.
+```
+# Select the Sao Paulo data only
+location_saopaulo_df = location_df.loc[location_df['geolocation_city']=='sao paulo'].reset_index()
+location_saopaulo_df.drop(columns=['index'], inplace=True)
+```
+Use reverse_geocoder and latitudes and longitudes from the dataset to get the name of the cities
+```
+res =  rg.search(tuple(zip(location_saopaulo_df['geolocation_lat'], 
+                           location_saopaulo_df['geolocation_lng'])))
+df_address = pd.DataFrame(res) 
+```
+
+
 
 
 2. What is the most popular products? (Which product is creating revenue the most?)

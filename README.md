@@ -107,13 +107,14 @@ plt.ylabel("Revenue")
 
 **Plan: Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers.**
 
-The original dataset consist of 1000163 rows which contain the latitudes and longitudes of various cities so I extracted only the rows of the city "Sao Paulo" which has 135800 rows.
+- The original dataset consist of 1000163 rows which contain the latitudes and longitudes of various cities so I extracted only the rows of the city "Sao Paulo" which has 135800 rows.
 ```
 # Select the Sao Paulo data only
 location_saopaulo_df = location_df.loc[location_df['geolocation_city']=='sao paulo'].reset_index()
 location_saopaulo_df.drop(columns=['index'], inplace=True)
 ```
-Use reverse_geocoder and latitudes and longitudes from the dataset to get the name of the cities
+
+- Use reverse_geocoder and latitudes and longitudes from the dataset to get the name of the cities
 ```
 res =  rg.search(tuple(zip(location_saopaulo_df['geolocation_lat'], 
                            location_saopaulo_df['geolocation_lng'])))

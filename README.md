@@ -121,7 +121,12 @@ res =  rg.search(tuple(zip(location_saopaulo_df['geolocation_lat'],
 df_address = pd.DataFrame(res) 
 ```
 
-
+- Create a map of Sao Paulo
+```
+location_saopaulo = geolocator.geocode("Sao Paulo, Brazil")
+map_saopaulo = folium.Map(location=[location_saopaulo.latitude, location_saopaulo.longitude])
+```
+![Image Description](https://i.postimg.cc/vmSvsDjD/5-saopaulo-map.png)
 
 
 2. What is the most popular products? (Which product is creating revenue the most?)

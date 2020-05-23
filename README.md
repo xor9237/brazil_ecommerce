@@ -34,7 +34,7 @@ from sklearn.cluster import KMeans
 import reverse_geocoder as rg
 ```
 
-### 1. If they open the offline store, which states of cities should they target first? 
+### 1. Where are the cities and the states with the most revenues? 
 
 
 Read each files individually and create dataframes
@@ -103,7 +103,7 @@ plt.ylabel("Revenue")
 
 ![Image Description](https://i.postimg.cc/65tzk5F9/4-Barchart-for-1.png)
 
-### 2. If, for example, Olist first decided to open their first offlines store in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the place to open the first store?
+### 2. If, for example, Olist first decided to open their first warehouse in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the area to open?
 
 **Plan: Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers.**
 

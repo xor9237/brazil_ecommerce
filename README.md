@@ -152,6 +152,7 @@ callback = ('function (row) {'
 map_saopaulo.add_child(FastMarkerCluster(df_address[['lat', 'lon','name']].values.tolist(), callback=callback))
 ```
 ![Image Description](https://i.postimg.cc/tCw2cfB8/6-saopaulo-clusteredmap.png)
+Among the cities in Sao Paulo, Brazil, the most accessible city and where the most Olist's customers live in is Sao Paulo in the state Sao Paulo.
 
 - Choose the location where there are many clothing stores around?
 

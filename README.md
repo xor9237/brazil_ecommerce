@@ -128,6 +128,30 @@ map_saopaulo = folium.Map(location=[location_saopaulo.latitude, location_saopaul
 ```
 ![Image Description](https://i.postimg.cc/vmSvsDjD/5-saopaulo-map.png)
 
+- Cluster the given data of latitudes and longitudes into the cities in Sao Paulo
+```
+from folium.plugins import FastMarkerCluster
+             
+callback = ('function (row) {' 
+                'var marker = L.marker(new L.LatLng(row[0], row[1]), {color: "red"});'
+                'var icon = L.AwesomeMarkers.icon({'
+                "icon: 'info-sign',"
+                "iconColor: 'white',"
+                "markerColor: 'green',"
+                "prefix: 'glyphicon',"
+                "extraClasses: 'fa-rotate-0'"
+                    '});'
+                'marker.setIcon(icon);'
+                "var popup = L.popup({maxWidth: '300'});"
+                "const display_text = {text: row[2]};"
+                "var mytext = $(`<div id='mytext' class='display_text' style='width: 100.0%; height: 100.0%;'> ${display_text.text}</div>`)[0];"
+                "popup.setContent(mytext);"
+                "marker.bindPopup(popup);"
+                'return marker};')
+                             
+map_saopaulo.add_child(FastMarkerCluster(df_address[['lat', 'lon','name']].values.tolist(), callback=callback))
+```
+![Image Description](https://i.postimg.cc/tCw2cfB8/6-saopaulo-clusteredmap.png)
 
 - Choose the location where there are many clothing stores around?
 

@@ -129,6 +129,9 @@ map_saopaulo = folium.Map(location=[location_saopaulo.latitude, location_saopaul
 ![Image Description](https://i.postimg.cc/vmSvsDjD/5-saopaulo-map.png)
 
 
+- Choose the location where there are many clothing stores around?
+
+
 2. What is the most popular products? (Which product is creating revenue the most?)
 
 

@@ -155,6 +155,7 @@ map_saopaulo.add_child(FastMarkerCluster(df_address[['lat', 'lon','name']].value
 Among the cities in Sao Paulo, Brazil, the most accessible city and where the most Olist's customers are living in is city Sao Paulo in the state Sao Paulo.
 
 - Find the best Borough to open the warehouse
+
 Since now I know that the best city is Sao Paulo in the state Sao Paulo, I found the list of boroughs in Sao Paulo and made the list then create the new dataframe containing the list of Boroughs.
 ```
 # Which borough shoud Olist choose to open the store in Sao Paulo

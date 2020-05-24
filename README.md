@@ -154,6 +154,43 @@ map_saopaulo.add_child(FastMarkerCluster(df_address[['lat', 'lon','name']].value
 ![Image Description](https://i.postimg.cc/tCw2cfB8/6-saopaulo-clusteredmap.png)
 Among the cities in Sao Paulo, Brazil, the most accessible city and where the most Olist's customers are living in is city Sao Paulo in the state Sao Paulo.
 
+- Find the best Borough to open the warehouse
+Since now I know that the best city is Sao Paulo in the state Sao Paulo, I found the list of boroughs in Sao Paulo and made the list then create the new dataframe containing the list of Boroughs.
+```
+# Which borough shoud Olist choose to open the store in Sao Paulo
+# Get the boroughs in Sao Paulo and get the latitude and longitude of each
+borough_saopaulo = pd.DataFrame(columns=['borough'])
+list_borough = ['Aricanduva', 'Butantã', 'Campo Limpo', 'Casa Verde',
+       'Cidade Ademar', 'Cidade Tiradentes', 'Ermelino Matarazzo', 'Freguesia-Brasilândia',
+       'Guaianases', 'Ipiranga', 'Itaim Paulista', 'Itaquera', 'Jabaquara', 'Jaçanã-Tremembé',
+       'Lapa', 'M\'Boi Mirim', 'Mooca', 'Parelheiros', 'Penha', 'Perus', 'Pinheiros',
+       'Pirituba-Jaraguá', 'Santana-Tucuruvi', 'Santo Amaro', 'São Mateus', 'São Miguel Paulista',
+       'Sapopemba', 'Sé', 'Villa Guilherme', 'Vila Mariana',
+       'Vila Prudente']
+num=0
+for x in list_borough:
+    borough_saopaulo.loc[num, 'borough'] = x
+    num+=1
+```
+
+Add the empty columns of latitude and longitude to the new dataframe. Then, use the name of boroughs to get latitudes and longitudes of each borough.
+```
+# Create empty colums for latitude and longitude
+borough_saopaulo['latitude']=""
+borough_saopaulo['longitude']=""
+
+# Use name of Boroughs to get latitude and logitude and apply to the new columns
+y=0
+for x in borough_saopaulo.loc[:,'borough']:
+    geolocator = Nominatim(user_agent="foursquare_agent")
+    location = geolocator.geocode("{}, São Paulo, Brazil".format(x))
+    borough_saopaulo.loc[y, 'latitude'] = location.latitude
+    borough_saopaulo.loc[y, 'longitude'] = location.longitude
+    y+=1
+```
+First 5 rows of the new dataframe which consist of the name of borough, latitude and longitude as an exmaple.
+![Image Description](https://i.postimg.cc/QNzLNHHK/7-df-borough-saopaulo.png)
+
 - Choose the location where there are many clothing stores around?
 
 

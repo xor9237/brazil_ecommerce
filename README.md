@@ -103,7 +103,7 @@ plt.ylabel("Revenue")
 
 ![Image Description](https://i.postimg.cc/65tzk5F9/4-Barchart-for-1.png)
 
-### 2. If, for example, Olist first decided to open their first warehouse in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the area to open?
+### 2. If, for example, Olist first decided to open their first offline store in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the area to open?
 
 **Plan: Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers.**
 
@@ -192,7 +192,9 @@ for x in borough_saopaulo.loc[:,'borough']:
 First 5 rows of the new dataframe which consist of the name of borough, latitude and longitude as an exmaple.
 ![Image Description](https://i.postimg.cc/QNzLNHHK/7-df-borough-saopaulo.png)
 
-- Choose the location where there are many clothing stores around?
+- Choose the location where there are many clothing stores around
+
+
 
 
 2. What is the most popular products? (Which product is creating revenue the most?)

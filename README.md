@@ -103,7 +103,7 @@ plt.ylabel("Revenue")
 
 ![Image Description](https://i.postimg.cc/65tzk5F9/4-Barchart-for-1.png)
 
-### 2. If, for example, Olist first decided to open their first offline store in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, where would be the area to open?
+### 2. If, for example, Olist first decided to open their first offline store for clothes in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, which area should Olist consider?
 
 **Plan: Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers.**
 

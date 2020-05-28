@@ -271,6 +271,79 @@ Example of the venues
 
 - Data Preprocessing  :  Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
 For example, Sake Bar and Lounge will be replaced to 'Bar'
+List of Venues
+```
+# List of venues to replace the values
+list_gym = ['Gym / Fitness Center', 'Gymnastics Gym', 'College Gym', 'Gym']
+list_leisure=['Pool', 'Gym Pool', 'Spa', 'Skate Park', 'Bowling Alley', 
+              'Pool Hall', 'Outdoors & Recreation', 'Arcade']
+list_theater = ['Theater', 'Movie Theater', 'Multiplex', 'Indie Theater']
+list_park = ['Skate Park']
+list_sports = ['Athletics & Sports','Martial Arts Dojo', 'Dance Studio']
+list_station = ['Metro Station', 'Train Station', 'Bus Station']
+list_art = ['Art Gallery', 'Art Museum', 'Science Museum', 'History Museum',
+           'Street Art', 'Museum']
+list_pastry = ['Pastry Shop', 'Bakery', 'Pastelaria', 'Pie Shop']
+list_drink = ['Bar', 'Sake Bar', 'Lounge', 'Brewery', 'Beer Store',
+             'Beer Bar', 'Gastropub', 'Speakeasy', 'Dive Bar', 
+             'Beer Garden']
+list_dessert = ['Creperie', 'Cupcake Shop', 'Candy Store', 'Dessert Shop',
+               'Ice Cream Shop', 'Snack Place', 'Chocolate Shop',
+               'Acai House']
+list_fashion = ['Men\'s Store', 'Women\'s Store', 'Thrift / Vintage Store',
+               'Shoe Store', 'Jewelry Store', 'Costume Shop', 'Outlet Store']
+list_restaurant = ['Vegetarian / Vegan Restaurant', 'Asian Restaurant',
+                  'Brazilian Restaurant', 'Diner', 'Mineiro Restaurant',
+                  'Fried Chicken Joint', 'Steakhouse', 'Burger Joint',
+                  'Pizza Place', 'Food', 'Wings Joint', 'BBQ Joint',
+                  'Comfort Food Restaurant', 'Food & Drink Shop',
+                  'Food Stand', 'Buffet', 'Deli / Bodega', 
+                  'Italian Restaurant', 'American Restaurant',
+                  'Paella Restaurant', 'Seafood Restaurant', 'Bistro',
+                  'Sandwich Place', 'Japanese Restaurant', 'Argentinian Restaurant',
+                  'Sushi Restaurant', 'Food Truck', 'Breakfast Spot',
+                  'Persian Restaurant', 'Empanada Restaurant', 'Bagel Shop',
+                  'Hot Dog Joint', 'Fast Food Restaurant', 'Cafeteria',
+                  'Mexican Restaurant', 'Middle Eastern Restaurant', 
+                  'Chinese Restaurant', 'Falafel Restaurant', 'Northern Brazilian Restaurant',
+                  'Tapiocaria', 'Noodle House', 'Halal Restaurant', 'Empada House',
+                  'Churrascaria']
+list_artvenue = ['Performing Arts Venue', 'Music Venue', 'Arts & Entertainment',
+                'Concert Hall', 'Auditorium']
+list_grocery = ['Grocery Store', 'Fruit & Vegetable Store', 'Supermarket'
+               ,'Farmers Market', 'Market', 'Convenience Store']
+list_home = ['Mattress Store', 'Furniture / Home Store']
+list_mall = ['Plaza', 'Department Store', 'Mall', 'Pedestrian Plaza']
+list_cafe = ['Tea Room', 'Juice Bar', 'Coffee Shop', 'Café', 'Cafe']
+list_club = ['Rock Club', 'Nightclub', 'Club']
+list_accomodations = ['Hotel', 'Motel', 'Hostel', 'Bed & Breakfast']
+list_pharmacy = ['Drugstore', 'Pharmacy']
+
+# Replace the values of venues
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_gym, 'Gym')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_leisure, 'Leisure & Recreation')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_theater, 'Theater')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_park, 'Park')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_sports, 'Sports Studio')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_station, 'Public Transportation')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_art, 'Gallery & Museum')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_pastry, 'Pastry & Bakery')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_drink, 'Pub & Bar')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_dessert, 'Dessert')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_fashion, 'Fashion Store')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_restaurant, 'Restaurant')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_artvenue, 'Art Venues')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_grocery, 'Grocery')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_home, 'Home Store')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_mall, 'Mall')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_cafe, 'Cafe')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_club, 'Club')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_accomodations, 'Accomodations')
+saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_pharmacy, 'Pharmacy')
+```
+
+
+
 
 
 

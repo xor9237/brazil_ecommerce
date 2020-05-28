@@ -192,7 +192,7 @@ for x in borough_saopaulo.loc[:,'borough']:
 First 5 rows of the new dataframe which consist of the name of borough, latitude and longitude as an exmaple.
 ![Image Description](https://i.postimg.cc/QNzLNHHK/7-df-borough-saopaulo.png)
 
-- Define the Foursquare information and radiu
+- Define the Foursquare information and radius
 ```
 # Define Foursquare Credentials and Version
 CLIENT_ID = '3MAR2Y4AH5PUQKHSI4TCMUQMLU2S45MO0TVJAKMHDDHAGINK' #  Foursquare ID
@@ -202,13 +202,83 @@ VERSION = '20180605' # Foursquare API version
 # Define the radius 
 radius=3000    # radius in meters
 LIMIT = 200    # limit the number of venues to return
+```
+
+- Define the function for getting the venues
+```
+def getNearbyVenues(names, latitudes, longitudes, radius=500):
+    
+    venues_list=[]
+    for name, lat, lng in zip(names, latitudes, longitudes):
+        print(name)
+            
+        # create the API request URL
+        url = 'https://api.foursquare.com/v2/venues/explore?&client_id={}&client_secret={}&v={}&ll={},{}&radius={}&limit={}'.format(
+            CLIENT_ID, 
+            CLIENT_SECRET, 
+            VERSION, 
+            lat, 
+            lng, 
+            radius, 
+            LIMIT)
+            
+        # make the GET request
+        results = requests.get(url).json()["response"]['groups'][0]['items']
+        
+        # return only relevant information for each nearby venue
+        venues_list.append([(
+            name, 
+            lat, 
+            lng, 
+            v['venue']['name'], 
+            v['venue']['location']['lat'], 
+            v['venue']['location']['lng'],  
+            v['venue']['categories'][0]['name']) for v in results])
+
+    nearby_venues = pd.DataFrame([item for venue_list in venues_list for item in venue_list])
+    nearby_venues.columns = ['Borough', 
+                  'Borough Latitude', 
+                  'Borough Longitude', 
+                  'Venue', 
+                  'Venue Latitude', 
+                  'Venue Longitude', 
+                  'Venue Category']
+    
+    return(nearby_venues)
+```
+
+- Use the defined function to get the venues
+```
+# def function on each neighborhood and create a new dataframe
+saopaulo_venues = getNearbyVenues(names=borough_saopaulo['borough'],
+                                   latitudes=borough_saopaulo['latitude'],
+                                   longitudes=borough_saopaulo['longitude']
+                                  )
+```
+
+- Check the list of venues to see if there are venues to replace for better clustering result
+```
+# List of all venues (duplicates removed)
+all_venues_list = list(saopaulo_venues['Venue Category'])
+venues_list=[]
+for venue in all_venues_list:
+    if venue not in venues_list:
+        venues_list.append(venue)
+venues_list
+```
+Example of the venues
+![Image Description](https://i.postimg.cc/x19gR7dN/8-list-of-venues.png)
+
+- Data Preprocessing  :  Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
+For example, Sake Bar and Lounge will be replaced to 'Bar'
+
+
+
 
 - Group by the boroughs to cluster them with venues around the borough
 
 
-- Data Preprocessing
-- Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
-For example, Sake Bar and Lounge will be replaced to 'Bar'
+
 
 
 

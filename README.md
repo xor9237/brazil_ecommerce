@@ -208,7 +208,7 @@ LIMIT = 200    # limit the number of venues to return
 
 - Data Preprocessing
 - Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
-
+For example, Sake Bar and Lounge will be replaced to 'Bar'
 
 
 

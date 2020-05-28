@@ -154,7 +154,7 @@ map_saopaulo.add_child(FastMarkerCluster(df_address[['lat', 'lon','name']].value
 ![Image Description](https://i.postimg.cc/tCw2cfB8/6-saopaulo-clusteredmap.png)
 Among the cities in Sao Paulo, Brazil, the most accessible city and where the most Olist's customers are living in is city Sao Paulo in the state Sao Paulo.
 
-- Find the best Borough to open the warehouse
+- Find the best Borough to open the clothing store
 
 Since now I know that the best city is Sao Paulo in the state Sao Paulo, I found the list of boroughs in Sao Paulo and made the list then create the new dataframe containing the list of Boroughs.
 ```
@@ -192,7 +192,27 @@ for x in borough_saopaulo.loc[:,'borough']:
 First 5 rows of the new dataframe which consist of the name of borough, latitude and longitude as an exmaple.
 ![Image Description](https://i.postimg.cc/QNzLNHHK/7-df-borough-saopaulo.png)
 
-- Choose the location where there are many clothing stores around
+- Define the Foursquare information and radiu
+```
+# Define Foursquare Credentials and Version
+CLIENT_ID = '3MAR2Y4AH5PUQKHSI4TCMUQMLU2S45MO0TVJAKMHDDHAGINK' #  Foursquare ID
+CLIENT_SECRET = 'SRPNGW0J3R5EFCSNVENLIXE4BUCCI0X2EEDBYRZTGYLY4HL3' #  Foursquare Secret
+VERSION = '20180605' # Foursquare API version
+
+# Define the radius 
+radius=3000    # radius in meters
+LIMIT = 200    # limit the number of venues to return
+
+- Group by the boroughs to cluster them with venues around the borough
+
+
+- Data Preprocessing
+- Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
+
+
+
+
+
 
 
 

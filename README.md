@@ -433,6 +433,84 @@ plt.ylabel('Silhoutte method')
 ![Image Description](https://i.postimg.cc/66j3TLVC/10-Silhouette-Method.png)
 Based on the result of the Silhouette Method, the optimal number of clusters is "7".
 
+- Run K-Means Clustering with k=7 and create a new dataframe with cluster labels.
+```
+# Based on the Silhouette Method, the optimal number of clusters is 7
+kclusters=7
+
+# run k-means clustering
+kmeans = KMeans(n_clusters=kclusters, random_state=0).fit(saopaulo_grouped_clustering)
+
+# check cluster labels generated for each row in the dataframe
+kmeans.labels_[0:10] 
+
+# Create a new dataframe that includes the cluster as well as the top 10 venues for each borough.
+# add clustering labels
+
+borough_venues_sorted.insert(0, 'Cluster Labels', kmeans.labels_) 
+
+saopaulo_merged = borough_saopaulo
+
+# merge saopaulo_grouped with saopaulo_data to add latitude/longitude for each borough
+saopaulo_merged = saopaulo_merged.join(borough_venues_sorted.set_index('Borough'), on='borough')
+```
+Example of the new dataframe
+![Image Description](https://i.postimg.cc/6Qx1spcT/11-saopaulo-merged.png)
+
+- Visualization of the map of K-means clustering
+```
+# Visualize
+# create map
+location_saopaulo = geolocator.geocode("Sao Paulo, Sao Paulo, Brazil")
+map_clusters = folium.Map(location=[location_saopaulo.latitude, location_saopaulo.longitude], zoom_start=10)
+
+
+# set color scheme for the clusters
+x = np.arange(kclusters)
+ys = [i + x + (i*x)**2 for i in range(kclusters)]
+colors_array = cm.rainbow(np.linspace(0, 1, len(ys)))
+rainbow = [colors.rgb2hex(i) for i in colors_array]
+
+# add markers to the map
+markers_colors = []
+for lat, lon, poi, cluster in zip(saopaulo_merged['latitude'], saopaulo_merged['longitude'], saopaulo_merged['borough'], saopaulo_merged['Cluster Labels']):
+    label = folium.Popup(str(poi) + ' Cluster ' + str(cluster), parse_html=True)
+    folium.CircleMarker(
+        [lat, lon],
+        radius=5,
+        popup=label,
+        color=rainbow[cluster-1],
+        fill=True,
+        fill_color=rainbow[cluster-1],
+        fill_opacity=0.7).add_to(map_clusters)
+```
+![Image Description](https://i.postimg.cc/CKJCvh63/12-Map-clustered.png)
+
+
+- To examine the clusters, return the dataframe of each cluster with top 5 venues
+```
+# Examine cluster 1
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 0, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]
+# Examine cluster 2
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 1, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]
+# Examine cluster 3
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 2, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]         # Examine cluster 4
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 3, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]         # Examine cluster 5
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 4, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]   
+# Examine cluster 6
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 5, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]
+# Examine cluster 7
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 6, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]
+```
+Then it returns dataframe like this as an example:
+![Image Description](https://i.postimg.cc/YCvhcp0c/13-Examine-cluster.png)
 
 
 

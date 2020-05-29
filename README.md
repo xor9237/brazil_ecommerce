@@ -269,7 +269,7 @@ venues_list
 Example of the venues
 ![Image Description](https://i.postimg.cc/x19gR7dN/8-list-of-venues.png)
 
-- Data Preprocessing  :  Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
+- **Data Preprocessing**  :  Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
 For example, Sake Bar and Lounge will be replaced to 'Bar'
 List of Venues
 ```
@@ -342,7 +342,7 @@ saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(li
 saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_pharmacy, 'Pharmacy')
 ```
 
-- "One hot encoding" to convert categorical variables to numeric variables.
+- **"One hot encoding"** to convert categorical variables to numeric variables.
 ```
 saopaulo_onehot = pd.get_dummies(saopaulo_venues[['Venue Category']], prefix="", prefix_sep="")
 
@@ -386,16 +386,13 @@ borough_venues_sorted['Borough'] = saopaulo_grouped['Borough']
 for ind in np.arange(saopaulo_grouped.shape[0]):
     borough_venues_sorted.iloc[ind, 1:] = return_most_common_venues(saopaulo_grouped.iloc[ind, :], num_top_venues)
 ```
-- Find the optimal 'K' for K-means clustering.
+**Find the optimal 'K' for K-means clustering.**
 - Drop the column 'Borough' for clustering
 ```
 saopaulo_grouped_clustering = saopaulo_grouped.drop('Borough', 1)
 ```
 
-
-
-- Group by the boroughs to cluster them with venues around the borough
-
+- 
 
 
 

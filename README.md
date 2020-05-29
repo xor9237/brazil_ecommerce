@@ -342,9 +342,55 @@ saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(li
 saopaulo_venues['Venue Category'] = saopaulo_venues['Venue Category'].replace(list_pharmacy, 'Pharmacy')
 ```
 
+- "One hot encoding" to convert categorical variables to numeric variables.
+```
+saopaulo_onehot = pd.get_dummies(saopaulo_venues[['Venue Category']], prefix="", prefix_sep="")
 
+# add borough column back to dataframe
+saopaulo_onehot['Borough'] = saopaulo_venues['Borough'] 
 
+# move borough column to the first column
+saopaulo_onehot = saopaulo_onehot.set_index('Borough').reset_index()
+```
+- Group rows by borough and by taking the mean of the frequency of occurence of each category then write a function that sort the venues in descending order.
+```
+saopaulo_grouped = saopaulo_onehot.groupby('Borough').mean().reset_index()
 
+# Write a function to sort the venues in descending order.
+def return_most_common_venues(row, num_top_venues):
+    row_categories = row.iloc[1:]
+    row_categories_sorted = row_categories.sort_values(ascending=False)
+    
+    return row_categories_sorted.index.values[0:num_top_venues]
+```
+- Create a new dataframe and display top 10 venues for each borough.
+```
+# Create a new dataframe and display top 10 venues for each borough
+import numpy as np
+num_top_venues = 5
+
+indicators = ['st', 'nd', 'rd']
+
+# create columns according to number of top venues
+columns = ['Borough']
+for ind in np.arange(num_top_venues):
+    try:
+        columns.append('{}{} Most Common Venue'.format(ind+1, indicators[ind]))
+    except:
+        columns.append('{}th Most Common Venue'.format(ind+1))
+
+# create a new dataframe
+borough_venues_sorted = pd.DataFrame(columns=columns)
+borough_venues_sorted['Borough'] = saopaulo_grouped['Borough']
+
+for ind in np.arange(saopaulo_grouped.shape[0]):
+    borough_venues_sorted.iloc[ind, 1:] = return_most_common_venues(saopaulo_grouped.iloc[ind, :], num_top_venues)
+```
+- Find the optimal 'K' for K-means clustering.
+- Drop the column 'Borough' for clustering
+```
+saopaulo_grouped_clustering = saopaulo_grouped.drop('Borough', 1)
+```
 
 
 

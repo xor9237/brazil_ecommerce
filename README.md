@@ -386,14 +386,52 @@ borough_venues_sorted['Borough'] = saopaulo_grouped['Borough']
 for ind in np.arange(saopaulo_grouped.shape[0]):
     borough_venues_sorted.iloc[ind, 1:] = return_most_common_venues(saopaulo_grouped.iloc[ind, :], num_top_venues)
 ```
-**Find the optimal 'K' for K-means clustering.**
+- **Find the optimal 'K' for K-means clustering.**
 - Drop the column 'Borough' for clustering
 ```
 saopaulo_grouped_clustering = saopaulo_grouped.drop('Borough', 1)
 ```
 
-- 
+- **Elbow Method**
+```
+# Use Elbow Method to find the optimal 'k' (number of clusters)
+distortions = []
+K = range(1,10)
+for k in K:
+    kmeanModel = KMeans(n_clusters=k)
+    kmeanModel.fit(saopaulo_grouped_clustering)
+    distortions.append(kmeanModel.inertia_)
+    
+plt.figure(figsize=(16,8))
+plt.plot(K, distortions, 'bx-')
+plt.xlabel('k')
+plt.ylabel('Distortion')
+plt.title('The Elbow Method showing the optimal k')
+plt.show()
+```
+![Image Description](https://i.postimg.cc/6QrqQkzQ/9-Elbow-Method.png)
+However, Elbow Method does not show "elbow" where it shows the optimal "k". Therefore, I used the "Silhouette Method" to find the optimal number of clusters
 
+- **Silhouette Method**
+```
+from sklearn.metrics import silhouette_score
+
+sil=[ ]
+kmax=10
+K=range(2,kmax+1)
+
+#dissimilarity would not be defined for a single cluster, thus minimum number of clusters should be 2
+for k in K:
+    kmeans = KMeans(n_clusters = k).fit(saopaulo_grouped_clustering)
+    labels = kmeans.labels_
+    sil.append(silhouette_score(saopaulo_grouped_clustering, labels, metric = 'euclidean'))
+    
+plt.plot(K, sil)
+plt.xlabel('k')
+plt.ylabel('Silhoutte method')
+```
+![Image Description](https://i.postimg.cc/66j3TLVC/10-Silhouette-Method.png)
+Based on the result of the Silhouette Method, the optimal number of clusters is "7".
 
 
 

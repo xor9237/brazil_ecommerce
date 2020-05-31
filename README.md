@@ -622,6 +622,13 @@ df_cluster_6.loc[1,'Count'] = count6pb['Cluster Labels']
 df_cluster_6.loc[1,'1st Most Common Venue'] = 'Pastry & Bakery'
 ```
 
+Then concatenate all dataframes of each cluster
+```
+df_cluster_concat = pd.concat([df_cluster_0, df_cluster_1, df_cluster_2,
+                              df_cluster_3, df_cluster_4, df_cluster_5,
+                              df_cluster_6])
+```
+
 
 
 

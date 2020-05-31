@@ -513,6 +513,115 @@ Then it returns dataframe like this as an example:
 ![Image Description](https://i.postimg.cc/YCvhcp0c/13-Examine-cluster.png)
 
 
+- Create a Dataframes for each clusters with number of 1st Most Common Venue counted to create a bar graph
+```
+# Count venues for cluster 0 and create a dataframe
+df_cluster_0 = pd.DataFrame(columns=['Cluster', 'Count', '1st Most Common Venue'])
+count0r = cluster_1st[(cluster_1st['Cluster Labels']==0) & (cluster_1st['1st Most Common Venue']=='Restaurant')].count()
+count0g = cluster_1st[(cluster_1st['Cluster Labels']==0) & (cluster_1st['1st Most Common Venue']=='Grocery')].count()
+
+df_cluster_0.loc[0, 'Cluster'] = 0
+df_cluster_0.loc[1, 'Cluster'] = 0
+    
+df_cluster_0.loc[0,'Count'] = count0r['Cluster Labels']
+df_cluster_0.loc[1, 'Count'] = count0g['Cluster Labels']
+df_cluster_0.loc[0,'1st Most Common Venue'] = 'Restaurant'
+df_cluster_0.loc[1,'1st Most Common Venue'] = 'Grocery'
+
+
+# Count venues for cluster 1 and create a dataframe
+df_cluster_1 = pd.DataFrame(columns=['Cluster', 'Count', '1st Most Common Venue'])
+count1r = cluster_1st[(cluster_1st['Cluster Labels']==1) & (cluster_1st['1st Most Common Venue']=='Restaurant')].count()
+
+df_cluster_1.loc[0, 'Cluster'] = 1
+
+df_cluster_1.loc[0,'Count'] = count1r['Cluster Labels']
+df_cluster_1.loc[0,'1st Most Common Venue'] = 'Restaurant'
+
+
+# Count venues for cluster 2 and create a dataframe
+df_cluster_2 = pd.DataFrame(columns=['Cluster', 'Count', '1st Most Common Venue'])
+count2r = cluster_1st[(cluster_1st['Cluster Labels']==2) & (cluster_1st['1st Most Common Venue']=='Restaurant')].count()
+count2m = cluster_1st[(cluster_1st['Cluster Labels']==2) & (cluster_1st['1st Most Common Venue']=='Mall')].count()
+count2h = cluster_1st[(cluster_1st['Cluster Labels']==2) & (cluster_1st['1st Most Common Venue']=='Home Store')].count()
+count2gm = cluster_1st[(cluster_1st['Cluster Labels']==2) & (cluster_1st['1st Most Common Venue']=='Gallery & Museum')].count()
+count2d = cluster_1st[(cluster_1st['Cluster Labels']==2) & (cluster_1st['1st Most Common Venue']=='Dessert')].count()
+
+df_cluster_2.loc[0, 'Cluster'] = 2
+df_cluster_2.loc[1, 'Cluster'] = 2
+df_cluster_2.loc[2, 'Cluster'] = 2
+df_cluster_2.loc[3, 'Cluster'] = 2
+df_cluster_2.loc[4, 'Cluster'] = 2
+
+df_cluster_2.loc[0,'Count'] = count2r['Cluster Labels']
+df_cluster_2.loc[1,'Count'] = count2m['Cluster Labels']
+df_cluster_2.loc[2,'Count'] = count2h['Cluster Labels']
+df_cluster_2.loc[3,'Count'] = count2gm['Cluster Labels']
+df_cluster_2.loc[4,'Count'] = count2d['Cluster Labels']
+
+df_cluster_2.loc[0,'1st Most Common Venue'] = 'Restaurant'
+df_cluster_2.loc[1,'1st Most Common Venue'] = 'Mall'
+df_cluster_2.loc[2,'1st Most Common Venue'] = 'Home Store'
+df_cluster_2.loc[3,'1st Most Common Venue'] = 'Gallery & Museum'
+df_cluster_2.loc[4,'1st Most Common Venue'] = 'Dessert'
+
+
+# Count venues for cluster 3 and create a dataframe
+df_cluster_3 = pd.DataFrame(columns=['Cluster', 'Count', '1st Most Common Venue'])
+
+df_cluster_3.loc[0, 'Cluster'] = 3
+
+count3r = cluster_1st[(cluster_1st['Cluster Labels']==3) & (cluster_1st['1st Most Common Venue']=='Restaurant')].count()
+
+df_cluster_3.loc[0,'Count'] = count3r['Cluster Labels']
+df_cluster_3.loc[0,'1st Most Common Venue'] = 'Restaurant'
+
+
+# Count venues for cluster 4 and create a dataframe
+df_cluster_4 = pd.DataFrame(columns=['Cluster', 'Count', '1st Most Common Venue'])
+
+df_cluster_4.loc[0, 'Cluster'] = 4
+
+count4pb = cluster_1st[(cluster_1st['Cluster Labels']==4) & (cluster_1st['1st Most Common Venue']=='Pastry & Bakery')].count()
+df_cluster_4.loc[0,'Count'] = count4pb['Cluster Labels']
+df_cluster_4.loc[0,'1st Most Common Venue'] = 'Pastry & Bakery'
+
+
+# Count venues for cluster 5 and create a dataframe
+df_cluster_5 = pd.DataFrame(columns=['Cluster', 'Count', '1st Most Common Venue'])
+
+df_cluster_5.loc[0, 'Cluster'] = 5
+df_cluster_5.loc[1, 'Cluster'] = 5
+df_cluster_5.loc[2, 'Cluster'] = 5
+
+count5pb = cluster_1st[(cluster_1st['Cluster Labels']==5) & (cluster_1st['1st Most Common Venue']=='Pastry & Bakery')].count()
+count5m = cluster_1st[(cluster_1st['Cluster Labels']==5) & (cluster_1st['1st Most Common Venue']=='Mall')].count()
+count5g = cluster_1st[(cluster_1st['Cluster Labels']==5) & (cluster_1st['1st Most Common Venue']=='Grocery')].count()
+
+df_cluster_5.loc[0,'Count'] = count5pb['Cluster Labels']
+df_cluster_5.loc[0,'1st Most Common Venue'] = 'Pastry & Bakery'
+df_cluster_5.loc[1, 'Count'] = count5m['Cluster Labels']
+df_cluster_5.loc[1, '1st Most Common Venue'] = 'Mall'
+df_cluster_5.loc[2, 'Count'] = count5g['Cluster Labels']
+df_cluster_5.loc[2, '1st Most Common Venue'] = 'Grocery'
+
+
+# Count venues for cluster 6 and create a dataframe
+df_cluster_6 = pd.DataFrame(columns=['Cluster', 'Count', '1st Most Common Venue'])
+
+df_cluster_6.loc[0, 'Cluster'] = 6
+df_cluster_6.loc[1, 'Cluster'] = 6
+
+
+count6r = cluster_1st[(cluster_1st['Cluster Labels']==6) & (cluster_1st['1st Most Common Venue']=='Restaurant')].count()
+count6pb = cluster_1st[(cluster_1st['Cluster Labels']==6) & (cluster_1st['1st Most Common Venue']=='Pastry & Bakery')].count()
+
+df_cluster_6.loc[0,'Count'] = count6r['Cluster Labels']
+df_cluster_6.loc[0,'1st Most Common Venue'] = 'Restaurant'
+df_cluster_6.loc[1,'Count'] = count6pb['Cluster Labels']
+df_cluster_6.loc[1,'1st Most Common Venue'] = 'Pastry & Bakery'
+```
+
 
 
 

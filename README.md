@@ -266,6 +266,7 @@ for venue in all_venues_list:
 venues_list
 ```
 Example of the venues
+
 ![](images/8.list_of_venues.png)
 
 - **Data Preprocessing**  :  Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
@@ -627,7 +628,7 @@ df_cluster_concat = pd.concat([df_cluster_0, df_cluster_1, df_cluster_2,
                               df_cluster_3, df_cluster_4, df_cluster_5,
                               df_cluster_6])
 ```
-![](images/14.Grouped_clustered_counted.png)
+![](images/14.Grouped_cluster_counted.png)
 
 - Create a ***Bar Chart***
 ```

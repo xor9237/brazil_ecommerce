@@ -102,7 +102,7 @@ plt.ylabel("Revenue")
 
 ![](images/4.Barchart_for_1.png)
 
-### 2. If, for example, Olist first decided to open their first offline store for clothes in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, which area should Olist consider?
+### 2. If, for example, Olist first decided to open their first offline store in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, which area should Olist consider?
 
 **Plan: Locate the location of customers in Sao Paulo, set the radius and choose the location where there are the most customers live around or choose the location where the most social places exist to find the location where it's easily accessible by potential customers.**
 
@@ -653,8 +653,23 @@ plt.xlabel('Cluster Number')
 
 ![](images/15.1stcommonvenue_barchart.png)
 
+Based on the bar graph above, clusters are
+Cluster 0: 'Restaurant and Grocery'
+Cluster 1: 'Restaurant'
+Cluster 2: 'Restaurant and many other venues'
+Cluster 3: 'Restaurant'
+Cluster 4: 'Pastry & Bakery'
+Cluster 5: 'Pastry & Bakery, Mall and Grocery'
+Cluster 6: 'Restaurant, Pastry & Bakery'
 
-
+Since Cluster 2 have many different venues such as restaurants, malls, home store, gallery & museum and dessert, these are the areas where many consumers visit. Therefore, Olist have to consider the boroughs in Cluster 2 for their offline store. 
+Boroughs in Cluster 2 are 
+```
+# Examine cluster 2
+saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 2, 
+                     saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]
+```
+![](images/16.cluster2.png)
 
 
 ```

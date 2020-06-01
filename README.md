@@ -67,8 +67,6 @@ state_pay = state_pay.sort_values(by='payment_value', ascending=False).reset_ind
 state_pay.head()
 ```
 ![](images/1.state_pay.png)
-![](images/1.state_pay.png)
-![Image description](https://i.postimg.cc/VLTQp1XF/Screen-Shot-2020-05-17-at-1-12-47-AM.png)
 
 **Top 5 cities with the highest revenues**
 ```
@@ -78,7 +76,7 @@ city_pay = city_pay.sort_values(by='payment_value', ascending=False).reset_index
 city_pay.head()
 ```
 
-![Image description](https://i.postimg.cc/9fFH2PvF/2-city-pay.png)
+![](images/2.city_pay.png)
 
 **Top 50 cities for revenues displayed in bar chart**
 ```

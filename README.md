@@ -89,7 +89,7 @@ plt.ylabel('Revenue')
 plt.ticklabel_format(axis='y', useOffset=False, style='plain')
 plt.show()
 ```
-![Image Description](https://i.postimg.cc/5t649JYG/3-Barchart-for-1.png)
+![](images/3.Barchart_for_#1.png)
 
 **States with the revenues in descending order displayed in bar chart**
 ```
@@ -100,7 +100,7 @@ plt.xlabel("States of customers")
 plt.ylabel("Revenue")
 ```
 
-![Image Description](https://i.postimg.cc/65tzk5F9/4-Barchart-for-1.png)
+![](images/4.Barchart_for_#1.png)
 
 ### 2. If, for example, Olist first decided to open their first offline store for clothes in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, which area should Olist consider?
 
@@ -125,7 +125,7 @@ df_address = pd.DataFrame(res)
 location_saopaulo = geolocator.geocode("Sao Paulo, Brazil")
 map_saopaulo = folium.Map(location=[location_saopaulo.latitude, location_saopaulo.longitude])
 ```
-![Image Description](https://i.postimg.cc/vmSvsDjD/5-saopaulo-map.png)
+![](images/5.saopaulo_map.png)
 
 - Cluster the given data of latitudes and longitudes into the cities in Sao Paulo
 ```
@@ -150,7 +150,7 @@ callback = ('function (row) {'
                              
 map_saopaulo.add_child(FastMarkerCluster(df_address[['lat', 'lon','name']].values.tolist(), callback=callback))
 ```
-![Image Description](https://i.postimg.cc/tCw2cfB8/6-saopaulo-clusteredmap.png)
+![](images/6.saopaulo-clusteredmap.png)
 Among the cities in Sao Paulo, Brazil, the most accessible city and where the most Olist's customers are living in is city Sao Paulo in the state Sao Paulo.
 
 - Find the best Borough to open the clothing store
@@ -189,7 +189,7 @@ for x in borough_saopaulo.loc[:,'borough']:
     y+=1
 ```
 First 5 rows of the new dataframe which consist of the name of borough, latitude and longitude as an exmaple.
-![Image Description](https://i.postimg.cc/QNzLNHHK/7-df-borough-saopaulo.png)
+![](images/7.df_borough_saopaulo.png)
 
 - Define the Foursquare information and radius
 ```
@@ -266,7 +266,7 @@ for venue in all_venues_list:
 venues_list
 ```
 Example of the venues
-![Image Description](https://i.postimg.cc/x19gR7dN/8-list-of-venues.png)
+![](images/8.list_of_venues.png)
 
 - **Data Preprocessing**  :  Since venues in 'Venue Category' have duplicates but with different names, replace the values if they can be categorized into same name of the venue.
 For example, Sake Bar and Lounge will be replaced to 'Bar'
@@ -408,7 +408,7 @@ plt.ylabel('Distortion')
 plt.title('The Elbow Method showing the optimal k')
 plt.show()
 ```
-![Image Description](https://i.postimg.cc/6QrqQkzQ/9-Elbow-Method.png)
+![](images/9.Elbow_Method.png)
 However, Elbow Method does not show "elbow" where it shows the optimal "k". Therefore, I used the "Silhouette Method" to find the optimal number of clusters
 
 - **Silhouette Method**
@@ -429,7 +429,7 @@ plt.plot(K, sil)
 plt.xlabel('k')
 plt.ylabel('Silhoutte method')
 ```
-![Image Description](https://i.postimg.cc/66j3TLVC/10-Silhouette-Method.png)
+![](images/10.Silhouette_Method.png)
 Based on the result of the Silhouette Method, the optimal number of clusters is "7".
 
 - Run K-Means Clustering with k=7 and create a new dataframe with cluster labels.
@@ -454,7 +454,7 @@ saopaulo_merged = borough_saopaulo
 saopaulo_merged = saopaulo_merged.join(borough_venues_sorted.set_index('Borough'), on='borough')
 ```
 Example of the new dataframe
-![Image Description](https://i.postimg.cc/6Qx1spcT/11-saopaulo-merged.png)
+![](images/11.saopaulo_merged.png)
 
 - Visualization of the map of K-means clustering
 ```
@@ -483,7 +483,7 @@ for lat, lon, poi, cluster in zip(saopaulo_merged['latitude'], saopaulo_merged['
         fill_color=rainbow[cluster-1],
         fill_opacity=0.7).add_to(map_clusters)
 ```
-![Image Description](https://i.postimg.cc/CKJCvh63/12-Map-clustered.png)
+![](images/12.Map_clustered.png)
 
 
 - To examine the clusters, return the dataframe of each cluster with top 5 venues
@@ -509,7 +509,7 @@ saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 6,
                      saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]
 ```
 Then it returns dataframe like this as an example:
-![Image Description](https://i.postimg.cc/YCvhcp0c/13-Examine-cluster.png)
+![](images/13.Examine_cluster.png)
 
 
 - Create a Dataframes for each clusters with number of 1st Most Common Venue counted to create a bar graph
@@ -627,7 +627,30 @@ df_cluster_concat = pd.concat([df_cluster_0, df_cluster_1, df_cluster_2,
                               df_cluster_3, df_cluster_4, df_cluster_5,
                               df_cluster_6])
 ```
-IMAGEGEGEGEGE
+![](images/14.Grouped_clustered_counted.png)
+
+- Create a ***Bar Chart***
+```
+# Create temporary dataframes to store only the values satisfying the condition to apply each bars of venues different colors
+temp1 = df_cluster_concat[df_cluster_concat['1st Most Common Venue']=='Restaurant']
+temp2 = df_cluster_concat[df_cluster_concat['1st Most Common Venue']=='Grocery']
+temp3 = df_cluster_concat[df_cluster_concat['1st Most Common Venue']=='Mall']
+temp4 = df_cluster_concat[df_cluster_concat['1st Most Common Venue']=='Home Store']
+temp5 = df_cluster_concat[df_cluster_concat['1st Most Common Venue']=='Gallery & Museum']
+temp6 = df_cluster_concat[df_cluster_concat['1st Most Common Venue']=='Dessert']
+temp7 = df_cluster_concat[df_cluster_concat['1st Most Common Venue']=='Pastry & Bakery']
+
+# Create a Bar Chart
+import seaborn as sns
+
+sns.factorplot(x='Cluster', y='Count', hue='1st Most Common Venue', 
+               data=df_cluster_concat, kind='bar', size=8)
+plt.title('1st Most Common Venues For Each Cluster')
+plt.ylabel('Frequency')
+plt.xlabel('Cluster Number')
+```
+
+![](images/15.1stcommonvenue_barchart.png)
 
 
 

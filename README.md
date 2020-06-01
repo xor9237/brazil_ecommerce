@@ -635,23 +635,15 @@ IMAGEGEGEGEGE
 
 
 ```
+# Other possible questions to analyze
 #2. What is the most popular products? (Which product is creating revenue the most?)
-
 
 #3. The month with the highest revenues (sales prediction)
 
-
 #4. Customer satisfaction with products(1,2: unsatisfied, 3: moderate, 4,5: satisfied). --> Product Quality 
-
 
 #5. Delivery Performance (Consumption of time till the arrival of the parcels)
 
-
-
-
 #6. Who pays more for the delivery fee? (Depends on city and purchase cost)
 
-
-
-#Elbow method to determine the optimal number of clusters for K-means clustering
 ```

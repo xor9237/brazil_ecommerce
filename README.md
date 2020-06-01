@@ -654,12 +654,19 @@ plt.xlabel('Cluster Number')
 ![](images/15.1stcommonvenue_barchart.png)
 
 Based on the bar graph above, clusters are
+
 Cluster 0: 'Restaurant and Grocery'
+
 Cluster 1: 'Restaurant'
+
 Cluster 2: 'Restaurant and many other venues'
+
 Cluster 3: 'Restaurant'
+
 Cluster 4: 'Pastry & Bakery'
+
 Cluster 5: 'Pastry & Bakery, Mall and Grocery'
+
 Cluster 6: 'Restaurant, Pastry & Bakery'
 
 Since Cluster 2 have many different venues such as restaurants, malls, home store, gallery & museum and dessert, these are the areas where many consumers visit. Therefore, Olist have to consider the boroughs in Cluster 2 for their offline store. 

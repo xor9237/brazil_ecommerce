@@ -679,9 +679,8 @@ saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 2,
 ```
 ![](images/16.cluster2.png)
 
-Sao Paulo is the city where Olist is getting their revenue the most. To open the offline store in Sao Paulo, they want to consider the area where consumers visit the most, where it's easily accessible by consumers. Cluster 2 is boroughs where there are many different social and art venues so they are the best boroughs to consider for opening the offline store. 
+Sao Paulo is the city where Olist is getting their revenue the most. To open the offline store in Sao Paulo, they want to consider the area where consumers visit the most, where it's easily accessible by consumers. Cluster 2 is boroughs where there are many different social and art venues so they are the best boroughs to consider for opening the offline store. Therefore, Olist have to consider boroughs above.
 
-Boroughs in cluster 2 are: Butantã, Campo Limpo, Casa Verde, Cidade Tiradentes, Itaquera, Jabaquara, Lapa, Penha, Pirituba-Jaraguá, Sé, Vila Prudente.
 
 ```
 # Other possible questions to analyze

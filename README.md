@@ -483,7 +483,7 @@ for lat, lon, poi, cluster in zip(saopaulo_merged['latitude'], saopaulo_merged['
         fill_color=rainbow[cluster-1],
         fill_opacity=0.7).add_to(map_clusters)
 ```
-![](images/12. Map_clustered.png)
+![](images/12.Map_clustered.png)
 
 
 - To examine the clusters, return the dataframe of each cluster with top 5 venues
@@ -509,7 +509,7 @@ saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 6,
                      saopaulo_merged.columns[[0] + list(range(4, saopaulo_merged.shape[1]))]]
 ```
 Then it returns dataframe like this as an example:
-![](images/13. Examine_cluster.png)
+![](images/13.Examine_cluster.png)
 
 
 - Create a Dataframes for each clusters with number of 1st Most Common Venue counted to create a bar graph

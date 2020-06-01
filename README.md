@@ -89,7 +89,7 @@ plt.ylabel('Revenue')
 plt.ticklabel_format(axis='y', useOffset=False, style='plain')
 plt.show()
 ```
-![](images/3.Barchart_for_#1.png)
+![](images/3.Barchart_for_1.png)
 
 **States with the revenues in descending order displayed in bar chart**
 ```
@@ -100,7 +100,7 @@ plt.xlabel("States of customers")
 plt.ylabel("Revenue")
 ```
 
-![](images/4.Barchart_for_#1.png)
+![](images/4.Barchart_for_1.png)
 
 ### 2. If, for example, Olist first decided to open their first offline store for clothes in Sao Paulo where the highest revenue coming from out of all the cities in Brazil, which area should Olist consider?
 

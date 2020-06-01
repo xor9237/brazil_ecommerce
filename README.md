@@ -670,6 +670,7 @@ Cluster 5: 'Pastry & Bakery, Mall and Grocery'
 Cluster 6: 'Restaurant, Pastry & Bakery'
 
 Since Cluster 2 have many different venues such as restaurants, malls, home store, gallery & museum and dessert, these are the areas where there are consumers visit the most. Therefore, Olist have to consider the boroughs in Cluster 2 for their offline store. 
+
 Boroughs in Cluster 2 are 
 ```
 # Examine cluster 2

@@ -713,9 +713,9 @@ plt.xticks(rotation=360)
 plt.title('Total payment made for each month')
 ```
 ![](images/17.barchartfor3-1.png)
-Based on the bar graph, 
+Based on the bar graph above, 
 1. May is the month with the highest revenue but the revenue on July and Auguest are almost identical as May.
-2. Revenue drops in the early fall and stays relatively low through the winter then start to increase in the late winter and stays relatively high through spring and summer. Therefore, from early spring to the late summer is the best seasons to generate revenues.
+2. Revenue drops in the early fall and stays relatively low through the winter then start to increase in the late winter and stays relatively high through spring and summer. Therefore, from early spring to the late summer is the best seasons to generate revenues and from early autummn to the early winter is the worst season to generate revenue.
 
 
 
@@ -738,6 +738,9 @@ plt.xticks(rotation=360)
 plt.title('Total payment made at each hour')
 ```
 ![](images/18.barchartfor3_2.png)
+Based on the bar graph above,
+1. Time that generates the highest revenue are at 14:00 and 16:00.
+2. Since most of consumers are sleeping around 01:00 to 7:00, revenue is extremely low. Then revenue start increasing from the early morning and stays high from 10:00 to 21:00 then start decreasing.
 
 
 

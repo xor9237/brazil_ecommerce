@@ -712,8 +712,11 @@ plt.ylabel('Total payment')
 plt.xticks(rotation=360)
 plt.title('Total payment made for each month')
 ```
-![](images/17.barchartfor3_1.png)
---> 
+![](images/17.barchartfor3-1.png)
+Based on the bar graph, 
+1. May is the month with the highest revenue but the revenue on July and Auguest are almost identical as May.
+2. Revenue drops in the early fall and stays relatively low through the winter then start to increase in the late winter and stays relatively high through spring and summer. Therefore, from early spring to the late summer is the best seasons to generate revenues.
+
 
 
 - Create a new dataframe consists of hours and the amount of payment made each hour

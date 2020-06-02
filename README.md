@@ -684,7 +684,7 @@ Sao Paulo is the city where Olist is getting their revenue the most. To open the
 
 ```
 # Other possible questions to analyze
-What is the most popular products? (Which product is creating revenue the most?)
+
 
 The month with the highest revenues (sales prediction)
 

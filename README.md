@@ -682,11 +682,38 @@ saopaulo_merged.loc[saopaulo_merged['Cluster Labels'] == 2,
 Sao Paulo is the city where Olist is getting their revenue the most. To open the offline store in Sao Paulo, they want to consider the area where consumers visit the most, where it's easily accessible by consumers. Cluster 2 is boroughs where there are many different social and art venues so they are the best boroughs to consider for opening the offline store. Therefore, Olist have to consider boroughs above.
 
 
+### 3. Sales prediction on hour, month and season with the most revenues
+
+- Convert the date and time into 'datetime' then add new columns of months and hours
+```
+# convert the time and date of order to 'datetime'
+cust_order_pay_df['order_purchase_timestamp'] = pd.to_datetime(cust_order_pay_df['order_purchase_timestamp'])
+
+# add new columns of month and hour
+cust_order_pay_df['order_month'] = cust_order_pay_df['order_purchase_timestamp'].dt.month
+cust_order_pay_df['order_hour'] = cust_order_pay_df['order_purchase_timestamp'].dt.hour
+```
+- Create a new dataframe consist of months and the amount of payment made each month
+```
+# Create a new dataframe consist of months and the amount of payment made
+order_month_df = cust_order_pay_df.groupby('order_month').sum().reset_index()
+order_month_df = order_month_df.loc[:, ['order_month','payment_value']]
+```
+- Plot the datafame with bar graph
+
+
+- Create a new dataframe consists of hours and the amount of payment made each hour
+```
+order_hour_df = cust_order_pay_df.groupby('order_hour').sum().reset_index()
+order_hour_df = order_hour_df.loc[:, ['payment_value', 'order_hour']]
+```
+
+
+
+
+
 ```
 # Other possible questions to analyze
-
-
-The month with the highest revenues (sales prediction)
 
 Customer satisfaction with products(1,2: unsatisfied, 3: moderate, 4,5: satisfied). --> Product Quality 
 

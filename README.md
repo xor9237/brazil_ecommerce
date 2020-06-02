@@ -713,6 +713,8 @@ plt.xticks(rotation=360)
 plt.title('Total payment made for each month')
 ```
 ![](images/17.barchartfor3_1.png)
+--> 
+
 
 - Create a new dataframe consists of hours and the amount of payment made each hour
 ```

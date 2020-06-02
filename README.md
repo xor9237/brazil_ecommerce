@@ -699,8 +699,20 @@ cust_order_pay_df['order_hour'] = cust_order_pay_df['order_purchase_timestamp'].
 order_month_df = cust_order_pay_df.groupby('order_month').sum().reset_index()
 order_month_df = order_month_df.loc[:, ['order_month','payment_value']]
 ```
-- Plot the datafame with bar graph
 
+- Plot the dataframe of months with bar graph
+```
+colors = list('rrggggggbbbb')
+
+order_month_df.plot('order_month', 'payment_value', kind='bar', 
+                    color=colors, legend=None)
+plt.ticklabel_format(useOffset=False, style='plain', axis='y')
+plt.xlabel('Month')
+plt.ylabel('Total payment')
+plt.xticks(rotation=360)
+plt.title('Total payment made for each month')
+```
+![](images/17.barchartfor3_1.png)
 
 - Create a new dataframe consists of hours and the amount of payment made each hour
 ```
@@ -708,6 +720,19 @@ order_hour_df = cust_order_pay_df.groupby('order_hour').sum().reset_index()
 order_hour_df = order_hour_df.loc[:, ['payment_value', 'order_hour']]
 ```
 
+- Plot the dataframe of hours with bar graph
+```
+colors2 = list('rrrrrrrrrrggggygygggggbb')
+
+order_hour_df.plot('order_hour', 'payment_value', kind='bar', 
+                   color=colors2, legend=None)
+plt.ticklabel_format(useOffset=False, style='plain', axis='y')
+plt.xlabel('Hour')
+plt.ylabel('Total Payment')
+plt.xticks(rotation=360)
+plt.title('Total payment made at each hour')
+```
+![](images/18.barchartfor3_2.png)
 
 
 

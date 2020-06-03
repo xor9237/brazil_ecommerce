@@ -766,13 +766,16 @@ merged2_grouped.loc[:, ['product_category_name_english', 'Total Sum']].head(10)
 Plot the result using horizontal bar chart.
 ```
 for_plot=merged2_grouped.loc[:, ['product_category_name_english', 'Total Sum']].head(10)
-for_plot.plot('product_category_name_english', 'Total Sum', kind='barh')
+
+sns.barplot(x='Total Sum', y='product_category_name_english', data=for_plot,
+           palette='RdPu')
+
 plt.ticklabel_format(useOffset=False, axis='x', style='plain')
 plt.xlabel('Total')
 plt.ylabel('Product Category')
 plt.title('Total sum for each product category')
 ```
-![](images/19.top_products_bar.png)
+![](images/19.top_products_bar_.png)
 
 
 ### 5. Customer satisfaction on products: Top and bottom 10 product categories

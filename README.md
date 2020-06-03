@@ -4,7 +4,7 @@ Data Analysis using the public dataset from the Brazilian online store "Olist" w
 
 **Data Description**
 
-Dataset is consists of 8 datasets. 
+Dataset is consists of 9 datasets. 
 - "olist_customers_dataset.csv" consists of customers' ID, customers' zip code, customers' cities and state
 - "olist_orders_dataset.csv" consists of order ID, customers' ID, order delivery status, time of purchase, order approved date, order delivered date and order estimated date.
 - "olist_sellers_dataset.csv" consists of sellers' ID, sellers' zip codes and sellers' cities and states.
@@ -13,6 +13,7 @@ Dataset is consists of 8 datasets.
 - "olist_order_payments_dataset.csv" consists of order ID, payment type, installments of payments and payment values.
 - "olist_order_items_dataset.csv" consists of order ID, product ID, seller ID, shipping limit date, price and freight values.
 - "olist_geolocation_dataset.csv" consists of zip codes, latitudes, longitudes, cities and states.
+- "olist_products_dataset.csv" consists of product ID, product name and size of the products.
 
 
 **Modules to import**
@@ -743,6 +744,26 @@ Based on the bar graph above,
 2. Since most of consumers are sleeping around 01:00 to 7:00, revenue is extremely low. Then revenue start increasing from the early morning and stays high from 10:00 to 21:00 then start decreasing.
 
 
+### 4. Top product types that are generating the revenue the most
+Products are categorized into 73 categories. I used 3 dataframes which are order_item_df, products_df and productname_df.
+First, I merged products_df and productname_df to get the english name of each product.
+```
+merged1 = pd.merge(productname_df, products_df, on='product_category_name', how='inner')
+```
+
+Then I joined merged dataframe and order_item_df to match the payment that is made and products.
+```
+merged2 = pd.merge(merged1, order_item_df, on='product_id', how='inner')
+```
+
+Lastly, I grouped by the product name, sum them then sort the values in descending order and return the columns of name and total sum.
+```
+merged2_grouped = merged2.groupby('product_category_name_english').sum().reset_index()
+merged2_grouped.sort_values(by='price', ascending=False, inplace=True)
+merged2_grouped.rename(columns={'price':'Total Sum'}, inplace=True)
+merged2_grouped.loc[:, ['product_category_name_english', 'Total Sum']].head(10)
+```
+![](images/19.top_products.png)
 
 
 ```

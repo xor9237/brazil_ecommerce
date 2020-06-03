@@ -820,7 +820,6 @@ plt.title('Bottom 10 Product Categories')
 ```
 # Other possible questions to analyze
 
-Customer satisfaction with products(1,2: unsatisfied, 3: moderate, 4,5: satisfied). --> Product Quality 
 
 Delivery Performance (Consumption of time till the arrival of the parcels)
 

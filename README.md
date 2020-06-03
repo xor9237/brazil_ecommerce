@@ -765,6 +765,8 @@ merged2_grouped.loc[:, ['product_category_name_english', 'Total Sum']].head(10)
 ```
 Plot the result using horizontal bar chart.
 ```
+for_plot=merged2_grouped.loc[:, ['product_category_name_english', 'Total Sum']].head(10)
+
 sns.barplot(x='Total Sum', y='product_category_name_english', data=for_plot,
            palette='RdPu')
 

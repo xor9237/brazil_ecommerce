@@ -775,6 +775,45 @@ plt.title('Total sum for each product category')
 ![](images/19.top_products_bar.png)
 
 
+### 5. Customer satisfaction on products: Top and bottom 10 product categories
+Merge the dataframe
+```
+merged_review = pd.merge(review_df, merged2, on='order_id', how='inner')
+```
+Group by "product category", get mean then sort the values in both ascending and descending orders to get the top and bottom 10 product categories
+```
+merged_review2 = merged_review.groupby('product_category_name_english').mean().reset_index()
+for_plot2 = merged_review2.sort_values(by='review_score', ascending=False).head(10)
+for_plot3 = merged_review2.sort_values(ascending=True, by='review_score').head(10)
+```
+Plot top 10 product categories
+```
+sns.barplot(y='product_category_name_english', x='review_score', data=for_plot2,
+           palette='GnBu_d')
+plt.xlabel('Review Score')
+plt.ylabel('Product Categories')
+plt.title('Top 10 Product Categories')
+```
+![](images/20.top10_products_review.png)
+
+Plot bottom 10 product categories
+```
+sns.barplot(x='review_score', y='product_category_name_english', data=for_plot3,
+              palette=('GnBu_d'))
+# 'paper' makes things smaller and 'poster' make things larger
+sns.set_context('paper')
+
+plt.xlabel('Review Score')
+plt.ylabel('Product Categories')
+plt.title('Bottom 10 Product Categories')
+```
+![](images/21.bottom10_products_review.png)
+
+
+
+
+
+
 ```
 # Other possible questions to analyze
 

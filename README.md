@@ -873,12 +873,14 @@ order_review_merged['total_paid'] = order_review_merged['price']+order_review_me
 order_review_merged['shipping_ratio'] = order_review_merged['freight_value']/order_review_merged['total_paid']
 ```
 
-- Does the shipping cost ration affect the review score?
+1. Does the shipping cost ration affect the review score?
+
 From the new dataframe, group by 'review_score' and get the mean of 'shipping_ratio'. Then, plot it with the bar graph.
 ```
 review_ship_mean = order_review_merged.groupby('review_score').mean().reset_index()
 ```
 ![](images/23.bar_for_review_and_shipping.png)
+--> Bar plot shows that there is no clear difference between the effect of ratio of shipping cost on review scores. Therefore, review scores were not affected by the ratio of shipping costs.
 
 
 ```

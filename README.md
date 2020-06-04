@@ -853,7 +853,17 @@ plt.xlabel('Shipping ratio to the total payment', size=13)
 ```
 
 ![](images/22.freight_ratio_bar_plot.png)
+: Based on the result, 
+It seems ideal ratio of shipping cost to the total paymeny of the order < 0.25 and
+I believe the ratio should at least be < 0.35
+I recommend
+1. Shipping cost discount for bundle purchase 
+2. Offering slower delivery with lower shipping cost for the product with relatively low price to keep the ratio low, ideally < 0.25.
+3. shipping cost discount for the customers living in the region far from the seller.
 
+
+### 7. Did the delivery affect the review score?
+Plan: check the delivery time and freight ratio
 
 
 

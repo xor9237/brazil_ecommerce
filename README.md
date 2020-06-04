@@ -863,8 +863,22 @@ I recommend
 
 
 ### 7. Did the delivery affect the review score?
-Plan: check the delivery time and freight ratio
+- Get the necessary dataframes merged then get create a new dataframe with necessary columns only and calculate and add the new column total_paid and shipping_ratio.
+```
+order_review_df = pd.merge(order_df, review_df, on='order_id', how='inner')
+order_review_df2 = pd.merge(order_review_df, order_item_df, on='order_id', how='inner')
+order_review_merged=order_review_df2.loc[:,['price', 'freight_value', 'review_score', 
+                       'order_purchase_timestamp', 'order_delivered_customer_date']]
+order_review_merged['total_paid'] = order_review_merged['price']+order_review_merged['freight_value']
+order_review_merged['shipping_ratio'] = order_review_merged['freight_value']/order_review_merged['total_paid']
+```
 
+- Does the shipping cost ration affect the review score?
+From the new dataframe, group by 'review_score' and get the mean of 'shipping_ratio'. Then, plot it with the bar graph.
+```
+review_ship_mean = order_review_merged.groupby('review_score').mean().reset_index()
+```
+![](images/23.bar_for_review_and_shipping.png)
 
 
 ```

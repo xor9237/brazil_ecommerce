@@ -813,6 +813,18 @@ plt.title('Bottom 10 Product Categories')
 ![](images/21.bottom10_products_review.png)
 
 
+### 6. How much are consumers willing to pay for shipping cost?
+
+Get necessary columns from the dataframe 'order_item_df' then get the total amount of payment for each order. Then get the ration of shipping cost to the total amount.
+```
+df_ratio = order_item_df.loc[:, ['price', 'freight_value']]
+df_ratio['total'] = df_ratio['price'] + df_ratio['freight_value']
+df_ratio['ship_ratio_to_sum'] = df_ratio['freight_value'] / df_ratio['total']
+
+# round the ration to 2 decimals
+df_ratio['ship_ratio_to_sum'] = round(df_ratio['ship_ratio_to_sum'], 2)
+```
+
 
 
 

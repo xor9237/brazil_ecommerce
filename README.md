@@ -824,7 +824,35 @@ df_ratio['ship_ratio_to_sum'] = df_ratio['freight_value'] / df_ratio['total']
 # round the ration to 2 decimals
 df_ratio['ship_ratio_to_sum'] = round(df_ratio['ship_ratio_to_sum'], 2)
 ```
+Get the list of values of ratios, create a new dataframe that only contains the shipping cost ratio to total payment column. After that, group the dataframe by 'shipping cost ratio' then count the number of orders placed then merge the dataframe with the new dataframe.
+```
+list_of_ratio = list(df_ratio['ship_ratio_to_sum'].unique())
 
+df_ratio_count = pd.DataFrame(list_of_ratio).rename(columns={0:'ship_ratio_to_sum'})
+
+df_ratio_groupby = df_ratio.groupby('ship_ratio_to_sum').count()
+df_ratio_count = pd.merge(df_ratio_groupby, df_ratio_count, on='ship_ratio_to_sum', how='inner')
+df_ratio_count.drop(['price', 'freight_value'], axis=1, inplace=True)
+df_ratio_count.rename(columns={'total':'count'}, inplace=True)
+```
+Based on the sum of number of orders placed, it returns 112650. Therefore, divide each values in count column to get the count_ratio for the percentage each shipping cost ratios takes and sort the values in descending order.
+```
+df_ratio_count.sum()
+df_ratio_count['count_ratio'] = df_ratio_count['count']/112650
+df_ratio_count.sort_values(ascending=False, by='count_ratio')
+```
+Plot the dataframe with the bar plot
+```
+sns.barplot(x='ship_ratio_to_sum', y='count', palette='GnBu_d',
+           data=df_ratio_count)
+sns.set(rc={'figure.figsize':(20,20)})
+plt.xticks(rotation=90, size=13)
+plt.yticks(size=13)
+plt.ylabel('Number of orders placed', size=13)
+plt.xlabel('Shipping ratio to the total payment', size=13)
+```
+
+![](images/22.freight_ratio_bar_plot.png)
 
 
 

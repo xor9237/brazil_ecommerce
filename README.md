@@ -908,6 +908,15 @@ order_time['days_between'] = (
 order_time = order_time.reset_index()
 ```
 
+Then group by 'review_score' and get the mean value of 'days_between".
+```
+order_time2 = order_time.loc[:, ['review_score', 'days_between']].groupby('review_score').mean()
+order_time2.reset_index(inplace=True)
+```
+
+Plot the result
+
+
 
 ```
 # Other possible questions to analyze

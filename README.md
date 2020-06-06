@@ -915,7 +915,23 @@ order_time2.reset_index(inplace=True)
 ```
 
 Plot the result
+```
+sns.barplot(x='review_score', y='days_between', data=order_time2,
+           palette = "GnBu")
+plt.xticks(size=30)
+plt.yticks(size=30)
+plt.xlabel('Review Score', size=30)
+plt.ylabel('Average Delivery Time', size=30)
+plt.annotate('.',
+            xy=(0, 22.3), 
+            arrowprops=dict(facecolor='black', shrink=0.1, width=10, headwidth=50),
+            xytext=(4.5,10)
+            )
+plt.text(1.1, 20, 'Review score decreases as Delivery time increases',
+        size=31)
+```
 
+![](images/24.review_delivery_plot.png)
 
 
 ```

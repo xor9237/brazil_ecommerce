@@ -883,6 +883,31 @@ review_ship_mean = order_review_merged.groupby('review_score').mean().reset_inde
 --> Bar plot shows that there is no clear difference between the effect of ratio of shipping cost on review scores. Therefore, review scores were not affected by the ratio of shipping costs.
 
 - 2. Do customers tend to less satisfied when the delivery takes longer time?
+```
+# make a new dataframe with only necessary columns
+order_time = order_review_df.loc[:, ['order_purchase_timestamp', 
+                                     'order_delivered_customer_date', 'review_score']]
+                                     
+# convert to datetime types
+order_time['order_purchase_timestamp'] = pd.to_datetime(order_time['order_purchase_timestamp'], errors='coerce')
+order_time['order_delivered_customer_date'] = pd.to_datetime(order_time['order_delivered_customer_date'], errors='coerce')
+
+# create new columns only with dates
+order_time['date_order'] = order_time['order_purchase_timestamp'].dt.date
+order_time['date_delivered'] = order_time['order_delivered_customer_date'].dt.date
+
+# Remove rows with NaT values
+order_time = order_time.dropna(axis=0, how='any')
+
+# Get days between order date and delivery date
+order_time['days_between'] = (
+    pd.to_datetime(order_time['date_delivered']) -
+    pd.to_datetime(order_time['date_order'])
+).apply(lambda x: x.days)
+
+order_time = order_time.reset_index()
+```
+
 
 ```
 # Other possible questions to analyze

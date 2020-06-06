@@ -933,13 +933,3 @@ plt.text(1.1, 20, 'Review score decreases as Delivery time increases',
 
 ![](images/24.review_delivery_plot.png)
 
-
-```
-# Other possible questions to analyze
-
-
-Delivery Performance (Consumption of time till the arrival of the parcels)
-
-Who pays more for the delivery fee? (Depends on city and purchase cost)
-
-```
